@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+
 import { MeetingdetailPage } from '../meetingdetail/meetingdetail';
 import { AlertController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { Meeting } from '../../app/model';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  selectedItem: any;
+  items: Meeting[];
+ 
   constructor(public navCtrl: NavController,private alertCtrl: AlertController) {
 
   }
@@ -46,4 +50,9 @@ export class HomePage {
     });
     alert.present();
   }
+
+  //itemTapped(event, item) {
+    // That's right, we're pushing to ourselves!
+    //this.navCtrl.push(, item);
+  //}
 }

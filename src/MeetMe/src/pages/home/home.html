@@ -1,11 +1,20 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>MeetMe</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <button ion-button color="secondary" (click)="createmeeting()">Secondary</button>
+   
 
+  <h2 class="text-center">MeetMe</h2>
+  <br>
+  <button class="btn btn-danger text-center block-center center-block">+</button>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+      {{item.name}}
+    </button>
+</ion-list> 
+<button ion-button color="secondary" (click)="createmeeting()">Secondary</button>
 </ion-content>
 
