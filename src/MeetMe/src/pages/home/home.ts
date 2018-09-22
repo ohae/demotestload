@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-
+import { NavController, NavParams } from 'ionic-angular';
+import { Meeting } from '../../app/model';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController) {
+  selectedItem: any;
+  items: Meeting[];
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
-
+  //itemTapped(event, item) {
+    // That's right, we're pushing to ourselves!
+    //this.navCtrl.push(, item);
+  //}
 }
