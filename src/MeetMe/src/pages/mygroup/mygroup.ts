@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MyGroup } from '../../app/model'
+import { HttpClient } from '@angular/common/http';
+import { MeetingdetailPage } from '../meetingdetail/meetingdetail';
+
 /**
  * Generated class for the MygroupPage page.
  *
@@ -16,11 +19,14 @@ import { MyGroup } from '../../app/model'
 export class MygroupPage {
   selectedItem: any;
   items: MyGroup[];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private httpClient: HttpClient) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MygroupPage');
   }
-
+  detail()
+  {
+    this.navCtrl.push(MeetingdetailPage);
+  }
 }
