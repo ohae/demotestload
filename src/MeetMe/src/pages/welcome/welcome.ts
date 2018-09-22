@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
+import { User } from '../../app/model'
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the WelcomePage page.
@@ -15,17 +17,23 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'welcome.html',
 })
 export class WelcomePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  item : User = new User("","","");
+  constructor(public navCtrl: NavController, public navParams: NavParams,private httpClient: HttpClient) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WelcomePage');
   }
-
-  RegisterName()
-  {
-    this.navCtrl.push(TabsPage);
-  }
-
+  RegisterName(){ 
+    let option = { "headers": { "Content-Type": "application/json" } };
+    this.httpClient.post("https://demomeetmeapi.azurewebsites.net/api/meetme/login",
+    this.item,
+      option).subscribe((result: any) => {        
+        console.log(result);
+      }, error => {
+        console.log(error);
+      });
+      alert("Success");
+      this.navCtrl.push(TabsPage);
+    }
 }
